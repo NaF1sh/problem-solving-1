@@ -4,6 +4,18 @@ Welcome to my problem-solving repository! Here, I save and organize all the prog
 
 ![Coding Animation](https://media.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.gif)
 
+## 🌟 Table of Contents
+- [📖 Introduction](#-introduction)
+- [🛠️ How to Use This Repository](#%EF%B8%8F-how-to-use-this-repository)
+- [📚 Platforms](#-platforms)
+  - [Beecrowd](#beecrowd)
+  - [HackerRank](#hackerrank)
+  - [AtCoder](#atcoder)
+  - [Codeforces](#codeforces)
+  - [Toph](#toph)
+- [🛠️ Languages and Tools](#%EF%B8%8F-languages-and-tools)
+- [📫 Contact](#-contact)
+
 ## 📖 Introduction
 
 This repository contains solutions to various programming problems from platforms like [LeetCode](https://leetcode.com/), [HackerRank](https://www.hackerrank.com/), [Codeforces](https://codeforces.com/), and more. Each problem is saved in its respective folder, along with my solution.
