@@ -1,29 +1,45 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-int main()
+int sumOfGoodElements(vector<vector<int>> &matrix, int n)
 {
-    string input;
-    cin >> input;
+    int sum = 0;
+    int middle = n / 2;
 
-    for (int i = 0; i < input.size(); i++)
+    for (int i = 0; i < n; ++i)
     {
+        sum += matrix[i][i];         // Main diagonal
+        sum += matrix[i][n - 1 - i]; // Secondary diagonal
+    }
 
-        int digit = input[i] - '0';
-
-        int inverted = 9 - digit;
-
-        if (i == 0 && inverted == 0)
+    for (int j = 0; j < n; ++j)
+    {
+        if (j != middle)
         {
-            continue;
-        }
-
-        if (inverted < digit)
-        {
-            input[i] = '0' + inverted;
+            sum += matrix[middle][j]; // Middle row
+            sum += matrix[j][middle]; // Middle column
         }
     }
 
-    cout << input << endl;
+    sum -= matrix[middle][middle]; // Middle element added twice
+    return sum;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<vector<int>> matrix(n, vector<int>(n));
+
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            cin >> matrix[i][j];
+        }
+    }
+
+    cout << sumOfGoodElements(matrix, n) << endl;
     return 0;
 }
