@@ -17,12 +17,7 @@ This repository contains solutions to problems from **competitive programming** 
 
 Each folder is organized by platform and contains solutions in different programming languages.
 
----
 
-## 🏆 Total Problems Solved: **XX**
-_(This section automatically updates when you run the update script!)_
-
----
 
 ## 🛠️ How to Use This Repository
 
