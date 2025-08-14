@@ -1,39 +1,38 @@
-#include <iostream>
-#include <string>
-#include <unordered_set>
+#include <bits/stdc++.h>
 using namespace std;
 
-bool canTransform(const string &a, const string &t)
+#define ll long long int
+#define cases(n) \
+    ll n;        \
+    cin >> n;    \
+    while (n--)
+#define fastread()           \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);
+void solve()
 {
-    unordered_set<char> setA(a.begin(), a.end());
-    unordered_set<char> setT(t.begin(), t.end());
 
-    for (char c : setT)
-    {
-        if (setA.find(c) != setA.end())
-        {
-            return true;
-        }
-    }
-    return false;
-}
+    string a1;
+    string a2;
+    cin >> a1 >> a2;
 
-int main()
-{
-    int q;
-    cin >> q;
-    while (q--)
+    unordered_set<char> a1set(a1.begin(), a1.end());
+    for (char c : a2)
     {
-        string a, t;
-        cin >> a >> t;
-        if (canTransform(a, t))
+        if (a1set.count(c))
         {
             cout << "YES" << endl;
-        }
-        else
-        {
-            cout << "NO" << endl;
+            return;
         }
     }
-    return 0;
+
+    cout << "NO" << endl;
+}
+int main()
+{
+    fastread();
+    cases(n)
+    {
+        solve();
+    }
 }

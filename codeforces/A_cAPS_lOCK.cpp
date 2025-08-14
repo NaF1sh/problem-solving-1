@@ -2,8 +2,15 @@
 using namespace std;
 
 #define ll long long int
+#define cases(n) \
+    ll n;        \
+    cin >> n;    \
+    while (n--)
+#define fastread()           \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);
 
-int main()
+void solve()
 {
     string s;
     cin >> s;
@@ -43,5 +50,11 @@ int main()
     }
 
     cout << s << endl;
-    return 0;
+}
+
+int main()
+{
+    fastread();
+
+    solve();
 }

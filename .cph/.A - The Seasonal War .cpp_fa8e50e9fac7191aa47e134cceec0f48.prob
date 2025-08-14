@@ -1,0 +1,1 @@
+{"name":"Local: A - The Seasonal War ","url":"d:\\problem solves\\A - The Seasonal War .cpp","tests":[{"id":1748053272079,"input":"6\n100100\n001010\n000000\n110000\n111000\n010100","output":"Image number 1 contains 3 war eagles."}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\problem solves\\A - The Seasonal War .cpp","group":"local","local":true}

@@ -1,45 +1,52 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-// Function to perform binary search
-int binarySearch(int arr[], int target)
+// === CONFIGURATION ===
+#define USE_FILE_IO false // Set to true to use input.txt/output.txt
+// ======================
+
+#define ll long long int
+#define fastread()           \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);
+#define file_io()                       \
+    ifstream fin("input.txt");          \
+    ofstream fout("output.txt");        \
+    if (!fin || !fout)                  \
+    {                                   \
+        cerr << "Error opening file\n"; \
+        exit(1);                        \
+    }                                   \
+    istream &in = fin;                  \
+    ostream &out = fout;
+
+#define standard_io()  \
+    istream &in = cin; \
+    ostream &out = cout;
+
+#define cases(t) \
+    ll t;        \
+    in >> t;     \
+    while (t--)
+#define GCD(a, b) ((b) == 0 ? (a) : GCD((b), (a) % (b)))
+/////////////////////////////////////////////////////////////////////////////////////////
+void solve(istream &in, ostream &out)
 {
-    int low = 0;
-    int high = sizeof(arr) - 1;
-
-    while (low <= high)
-    {
-        int mid = low + (high - low) / 2; // Avoid potential overflow
-        if (arr[mid] == target)
-            return mid; // Target found at index mid
-
-        else if (arr[mid] < target)
-        {
-            low = mid + 1; // Search in the right half
-        }
-        else
-        {
-            high = mid - 1; // Search in the left half
-        }
-    }
-
-    return -1; // Target not found
 }
 
 int main()
 {
-    int arr[] = {2, 3, 4, 10, 40};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    int target = 10;
+    fastread();
 
-    int result = binarySearch(arr, target);
-    if (result != -1)
+#if USE_FILE_IO
+    file_io();
+#else
+    standard_io();
+#endif
+
+    cases(t)
     {
-        cout << "Element is present at index " << result << endl;
-    }
-    else
-    {
-        cout << "Element is not present in the array" << endl;
+        solve(in, out); // Solve each test case
     }
 
     return 0;

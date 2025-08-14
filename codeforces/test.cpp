@@ -1,45 +1,54 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
-int sumOfGoodElements(vector<vector<int>> &matrix, int n)
+// === CONFIGURATION ===
+#define USE_FILE_IO false // Set to true to use input.txt/output.txt
+// ======================
+
+#define ll long long int
+#define fastread()           \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);
+#define file_io()                       \
+    ifstream fin("input.txt");          \
+    ofstream fout("output.txt");        \
+    if (!fin || !fout)                  \
+    {                                   \
+        cerr << "Error opening file\n"; \
+        exit(1);                        \
+    }                                   \
+    istream &in = fin;                  \
+    ostream &out = fout;
+
+#define standard_io()  \
+    istream &in = cin; \
+    ostream &out = cout;
+
+#define cases(t) \
+    ll t;        \
+    in >> t;     \
+    while (t--)
+#define GCD(a, b) ((b) == 0 ? (a) : GCD((b), (a) % (b)))
+/////////////////////////////////////////////////////////////////////////////////////////
+void solve(istream &in, ostream &out)
 {
-    int sum = 0;
-    int middle = n / 2;
-
-    for (int i = 0; i < n; ++i)
-    {
-        sum += matrix[i][i];         // Main diagonal
-        sum += matrix[i][n - 1 - i]; // Secondary diagonal
-    }
-
-    for (int j = 0; j < n; ++j)
-    {
-        if (j != middle)
-        {
-            sum += matrix[middle][j]; // Middle row
-            sum += matrix[j][middle]; // Middle column
-        }
-    }
-
-    sum -= matrix[middle][middle]; // Middle element added twice
-    return sum;
+    ll n;
+    in >> n;
+    ll ans = n % 2;
+    cout << ans;
 }
 
 int main()
 {
-    int n;
-    cin >> n;
-    vector<vector<int>> matrix(n, vector<int>(n));
+    fastread();
 
-    for (int i = 0; i < n; ++i)
-    {
-        for (int j = 0; j < n; ++j)
-        {
-            cin >> matrix[i][j];
-        }
-    }
+#if USE_FILE_IO
+    file_io();
+#else
+    standard_io();
+#endif
 
-    cout << sumOfGoodElements(matrix, n) << endl;
+    solve(in, out); // Solve each test case
+
     return 0;
 }

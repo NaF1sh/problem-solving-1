@@ -9,7 +9,6 @@ using namespace std;
 
 int main()
 {
-
     ll n;
     cin >> n;
     ll matrix[n][n];
@@ -21,10 +20,8 @@ int main()
             cin >> matrix[i][j];
         }
     }
-
     ll middle = n / 2;
     ll sum = 0;
-
     for (int i = 0; i < n; i++)
     {
         sum += matrix[i][i];

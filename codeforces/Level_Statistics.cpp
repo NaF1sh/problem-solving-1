@@ -1,0 +1,86 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// === CONFIGURATION ===
+#define USE_FILE_IO false // Set to true to use input.txt/output.txt
+// ======================
+
+#define ll long long int
+#define fastread()           \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);
+#define file_io()                       \
+    ifstream fin("input.txt");          \
+    ofstream fout("output.txt");        \
+    if (!fin || !fout)                  \
+    {                                   \
+        cerr << "Error opening file\n"; \
+        exit(1);                        \
+    }                                   \
+    istream &in = fin;                  \
+    ostream &out = fout;
+
+#define standard_io()  \
+    istream &in = cin; \
+    ostream &out = cout;
+
+#define cases(t) \
+    ll t;        \
+    in >> t;     \
+    while (t--)
+#define GCD(a, b) ((b) == 0 ? (a) : GCD((b), (a) % (b)))
+/////////////////////////////////////////////////////////////////////////////////////////
+void solve(istream &in, ostream &out)
+{
+
+    ll n;
+    in >> n;
+
+    vector<pair<ll, ll>> a(n);
+    bool flag = false;
+    for (size_t i = 0; i < n; i++)
+    {
+        ll a1, a2;
+        in >> a1 >> a2;
+        if (!flag)
+        {
+            if (a1 < a2)
+            {
+                flag = true;
+            }
+
+            if (i > 0)
+            {
+                if (a1 < a[i - 1].first || a2 < a[i - 1].second || (a1 - a[i - 1].first) < (a2 - a[i - 1].second))
+                {
+                    flag = true;
+                }
+            }
+            a[i] = {a1, a2};
+        }
+    }
+    if (!flag)
+        out << "YES" << endl;
+    else
+    {
+        out << "NO" << endl;
+    }
+}
+
+int main()
+{
+    fastread();
+
+#if USE_FILE_IO
+    file_io();
+#else
+    standard_io();
+#endif
+
+    cases(t)
+    {
+        solve(in, out); // Solve each test case
+    }
+
+    return 0;
+}

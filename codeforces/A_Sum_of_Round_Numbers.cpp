@@ -1,36 +1,81 @@
+
 #include <bits/stdc++.h>
 using namespace std;
+
+// === CONFIGURATION ===
+#define USE_FILE_IO false // Set to true to use input.txt/output.txt
+// ======================
+
 #define ll long long int
+#define fastread()           \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);
+#define file_io()                       \
+    ifstream fin("input.txt");          \
+    ofstream fout("output.txt");        \
+    if (!fin || !fout)                  \
+    {                                   \
+        cerr << "Error opening file\n"; \
+        exit(1);                        \
+    }                                   \
+    istream &in = fin;                  \
+    ostream &out = fout;
+
+#define standard_io()  \
+    istream &in = cin; \
+    ostream &out = cout;
+
+#define cases(t) \
+    ll t;        \
+    in >> t;     \
+    while (t--)
+#define GCD(a, b) ((b) == 0 ? (a) : GCD((b), (a) % (b)))
+/////////////////////////////////////////////////////////////////////////////////////////
+void solve(istream &in, ostream &out)
+{
+
+    string a;
+    in >> a;
+    ll count = 0;
+
+    vector<string> ans;
+    for (size_t i = 0; i < a.size(); i++)
+    {
+        if (a[i] != '0')
+        {
+            string a1;
+
+            a1 += a[i];
+            for (size_t j = a.size() - 1; j > i; j--)
+            {
+                a1 += '0';
+            }
+            ans.push_back(a1);
+        }
+    }
+
+    out << ans.size() << endl;
+    for (auto s : ans)
+    {
+        out << s << " ";
+    }
+    out << endl;
+}
+
 int main()
 {
-    ll t;
-    cin >> t;
-    while (t--)
+    fastread();
+
+#if USE_FILE_IO
+    file_io();
+#else
+    standard_io();
+#endif
+
+    cases(t)
     {
-        string input;
-        cin >> input;
-
-        ll size = input.size();
-        ll count = 0;
-        for (char c : input)
-        {
-            if (c > '0')
-                count++;
-        }
-        cout << count << endl;
-        for (int i = 0; i < size; i++)
-        {
-            if (input[i] > '0')
-            {
-                cout << input[i];
-
-                for (int j = size - 1; j > i; j--)
-                {
-                    cout << "0";
-                }
-                cout << " ";
-            }
-        }
-        cout << endl;
+        solve(in, out); // Solve each test case
     }
+
+    return 0;
 }

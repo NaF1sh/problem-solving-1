@@ -2,49 +2,42 @@
 using namespace std;
 
 #define ll long long int
-#define cases(n) \
-    ll n;        \
-    cin >> n;    \
-    while (n--)
+#define fastread()           \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);
 
-int main()
+void solve()
 {
-    string input;
-    cin >> input;
-    ll suma = 0;
-    ll sumb = 0;
-    bool flag = false;
+    int n;
+    cin >> n;
 
-    for (int i = 0; i < input.size(); i++)
+    map<string, int> counts;
+
+    for (int i = 0; i < n; ++i)
     {
-        if (input[i] == '1')
+        string team;
+        cin >> team;
+        counts[team]++;
+    }
+
+    string winner;
+    int max_count = 0;
+
+    for (const auto &pair : counts)
+    {
+        if (pair.second > max_count)
         {
-            if (i + 1 < input.size() && input[i + 1] == '1')
-                suma++;
-            else
-                suma = 0;
-            if (suma >= 6)
-            {
-                flag = true;
-                break;
-            }
-        }
-        if (input[i] == '0')
-        {
-            if (i + 1 < input.size() && input[i + 1] == '0')
-                sumb++;
-            else
-                sumb = 0;
-            if (sumb >= 6)
-            {
-                flag = true;
-                break;
-            }
+            max_count = pair.second;
+            winner = pair.first;
         }
     }
 
-    flag == true ? cout << "YES" : cout << "NO";
-    cout << endl;
+    cout << winner << endl;
+}
 
+int main()
+{
+    fastread();
+    solve();
     return 0;
 }

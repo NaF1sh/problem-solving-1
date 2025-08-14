@@ -1,30 +1,34 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int main()
+#define ll long long int
+#define cases(n) \
+    ll n;        \
+    cin >> n;    \
+    while (n--)
+#define fastread()           \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);
+void solve()
 {
-    int n, m;
+    ll n, m;
     cin >> n >> m;
 
-    // Minimum number of moves required (at least half of n)
-    int min_moves = (n + 1) / 2;
-
-    // Find the smallest number >= min_moves that is a multiple of m
-    while (min_moves % m != 0)
+    if (m > n)
     {
-        min_moves++;
+        cout << "-1";
+        return;
     }
+    ll moves = (n + 1) / 2;
 
-    // If min_moves exceeds n, no valid solution exists
-    if (min_moves > n)
+    while (moves % m != 0)
     {
-        cout << -1 << endl;
+        moves++;
     }
-    else
-    {
-        cout << min_moves << endl;
-    }
-
-    return 0;
+    cout << moves;
+}
+int main()
+{
+    fastread();
+    solve();
 }

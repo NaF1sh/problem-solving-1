@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define Team_blackslash return 0;
+
 #define ll long long
 
 using namespace std;

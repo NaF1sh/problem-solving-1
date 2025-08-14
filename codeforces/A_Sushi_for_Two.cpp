@@ -1,69 +1,48 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
+
+int longest_valid_sushi_segment(vector<int> &sushi)
+{
+    int n = sushi.size();
+    vector<int> groups;
+
+    // Count consecutive groups of sushi types
+    int count = 1;
+    for (int i = 1; i < n; i++)
+    {
+        if (sushi[i] == sushi[i - 1])
+        {
+            count++;
+        }
+        else
+        {
+            groups.push_back(count);
+            count = 1;
+        }
+    }
+    groups.push_back(count);
+
+    // Find the maximum valid segment
+    int max_length = 0;
+    for (int i = 1; i < groups.size(); i++)
+    {
+        max_length = max(max_length, 2 * min(groups[i - 1], groups[i]));
+    }
+
+    return max_length;
+}
 
 int main()
 {
     int n;
     cin >> n;
-
     vector<int> sushi(n);
     for (int i = 0; i < n; i++)
     {
         cin >> sushi[i];
     }
 
-    int maxLength = 0;
-    int left = 0;
-    int type1 = sushi[0], type2 = -1; // Initialize with the first type and set the second as -1
-    int countType1 = 0, countType2 = 0;
-
-    for (int right = 0; right < n; right++)
-    {
-        if (sushi[right] == type1)
-        {
-            countType1++;
-        }
-        else if (sushi[right] == type2 || type2 == -1)
-        {
-            type2 = sushi[right];
-            countType2++;
-        }
-        else
-        {
-            // Shrink the window until it becomes valid
-            while (countType1 > 0 && countType2 > 0)
-            {
-                if (sushi[left] == type1)
-                {
-                    countType1--;
-                }
-                else
-                {
-                    countType2--;
-                }
-                left++;
-            }
-            if (countType1 == 0)
-            {
-                type1 = sushi[right];
-                countType1 = 1;
-            }
-            else
-            {
-                type2 = sushi[right];
-                countType2 = 1;
-            }
-        }
-
-        // Update the maximum length of valid segment
-        if (countType1 > 0 && countType2 > 0)
-        {
-            maxLength = max(maxLength, min(countType1, countType2) * 2);
-        }
-    }
-
-    cout << maxLength << endl;
+    cout << longest_valid_sushi_segment(sushi) << endl;
     return 0;
 }
